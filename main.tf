@@ -21,7 +21,7 @@ resource "aws_security_group" "web-sg" {
 }
 
 resource "aws_instance" "web" {
-    ami           = "ami-db710fa3"
+    ami           = "ami-0d0150aa305b7226d"
     instance_type = "t2.micro"
     security_groups = ["${aws_security_group.web-sg.name}"]
 }
