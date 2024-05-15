@@ -25,6 +25,6 @@ resource "aws_instance" "web" {
     instance_type = "t2.micro"
     security_groups = ["${aws_security_group.web-sg.name}"]
     tags = {
-        Name = ao-tanaka
+        Name = "ao-tanaka"
     }
 }
