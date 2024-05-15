@@ -1,13 +1,13 @@
-variable "access_key" {}
-variable "secret_key" {}
-variable "region" {
-  default = "ap-northeast-1"
+variable "access_key" {}             #アクセスキーの変数宣言
+variable "secret_key" {}             #シークレットキーの変数宣言
+variable "region" {                  #リージョンの変数宣言
+  default = "ap-northeast-1"         #リージョンタイプ
 }
 
 provider "aws" {
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
-  region     = "${var.region}"
+  access_key = var.access_key
+  secret_key = var.secret_key
+  region     = var.region
 }
 
 resource "aws_security_group" "web-sg" {
@@ -25,6 +25,6 @@ resource "aws_instance" "web" {
     instance_type = "t2.micro"
     security_groups = ["${aws_security_group.web-sg.name}"]
     tags = {
-        Name = "ao-tanaka"
+        Name = "ao-tanaka"                                   #ご自身の名前に変えてみましょう
     }
 }
