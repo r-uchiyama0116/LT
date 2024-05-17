@@ -11,7 +11,7 @@ provider "aws" {                     #プロバイダーをAWSに指定
 }
 
 resource "aws_security_group" "web-sg" {  #セキュリティグループの作成。icmp通信を0番から8番ポートですべて許可するというセキュリティグループになっています。
-    name = "web-sg"                       #セキュリティグループの名前。好きな名前に書き換えてください
+    name = "web-sg r-uchiyama"                       #セキュリティグループの名前。好きな名前に書き換えてください
     ingress {                             #ingressの指定
       from_port = 0                         #0番ポートから8番ポートを対象とする
       to_port = 8
@@ -19,7 +19,7 @@ resource "aws_security_group" "web-sg" {  #セキュリティグループの作�
       cidr_blocks = ["0.0.0.0/0"]           #CIDRブロックのリスト。0.0.0.0/0の場合何も制限しないです。
     }
     tags = {
-        Name = "ao-tanaka"                                   #ご自身の名前に変えてみましょう
+        Name = "r-uchiyama"                                   #ご自身の名前に変えてみましょう
     }
 }
 
@@ -28,6 +28,6 @@ resource "aws_instance" "web" {                              #EC2インスタン
     instance_type = "t2.micro"                               #インスタンスタイプの指定。ここではt2.microを指定しています。
     security_groups = ["${aws_security_group.web-sg.name}"]  #セキュリティグループの結び付け。先ほど作成したセキュリティグループを紐づけています。
     tags = {
-        Name = "ao-tanaka"                                   #ご自身の名前に変えてみましょう
+        Name = "r-uchiyama"                                   #ご自身の名前に変えてみましょう
     }
 }
